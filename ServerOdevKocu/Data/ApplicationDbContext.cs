@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ServerOdevKocu.Data
 {
-    public class ApplicationDbContext:IdentityDbContext<AppUser,AppRole,int>
+    public class ApplicationDbContext:IdentityDbContext<AppUser,AppRole,int> 
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
         {

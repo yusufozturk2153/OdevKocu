@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yusuf\\source\\repos\\ServerOdevKocu\\ServerOdevKocu.csproj": {}
+    "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\OdevKocu\\ServerOdevKocu\\ServerOdevKocu.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yusuf\\source\\repos\\ServerOdevKocu\\ServerOdevKocu.csproj": {
+    "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\OdevKocu\\ServerOdevKocu\\ServerOdevKocu.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yusuf\\source\\repos\\ServerOdevKocu\\ServerOdevKocu.csproj",
+        "projectUniqueName": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\OdevKocu\\ServerOdevKocu\\ServerOdevKocu.csproj",
         "projectName": "ServerOdevKocu",
-        "projectPath": "C:\\Users\\yusuf\\source\\repos\\ServerOdevKocu\\ServerOdevKocu.csproj",
+        "projectPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\OdevKocu\\ServerOdevKocu\\ServerOdevKocu.csproj",
         "packagesPath": "C:\\Users\\yusuf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yusuf\\source\\repos\\ServerOdevKocu\\obj\\",
+        "outputPath": "C:\\Users\\yusuf\\OneDrive\\Masaüstü\\OdevKocu\\ServerOdevKocu\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
