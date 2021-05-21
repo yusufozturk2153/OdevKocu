@@ -40,7 +40,7 @@ namespace ServerOdevKocu.Data.Repositories.EfCoreRepositories
             return await _context.Set<TEntity>().FindAsync(filter);
         }
 
-        public async Task<List<TEntity>> GetAll(Expression<Func<TEntity, bool>> filter)
+        public async Task<List<TEntity>> GetAll(Expression<Func<TEntity, bool>> filter=null)
         {
            
               var entityList = filter==null ? _context.Set<TEntity>().ToListAsync()
