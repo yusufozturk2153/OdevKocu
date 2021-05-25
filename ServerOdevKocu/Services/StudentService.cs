@@ -1,48 +1,65 @@
-﻿using ServerOdevKocu.Data.Entities;
-using ServerOdevKocu.Data.Repositories.EfCoreRepositories;
+﻿using ServerOdevKocu.Entities;
 using ServerOdevKocu.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using AutoMapper;
+using ServerOdevKocu.Data.Repositories.Interfaces;
 
 namespace ServerOdevKocu.Services
 {
     public class StudentService : IStudentService
     {
-        EfCoreStudentRepository _efCoreStudentRepository;
-        public StudentService(EfCoreStudentRepository efCoreStudentRepository)
+        IStudentRepository _studentRepository;
+        
+
+
+        public StudentService(IStudentRepository studentRepository, 
+            IMapper mapper)
         {
-            _efCoreStudentRepository = efCoreStudentRepository;
+            _studentRepository = studentRepository;
+            
+         
         }
         public async Task Add(Student student)
         {
-             await _efCoreStudentRepository.Add(student);
+            await _studentRepository.Add(student);
         }
 
         public async Task Delete(Student student)
         {
-             await _efCoreStudentRepository.Delete(student);
+             await _studentRepository.Delete(student);
         }
 
         public async Task<List<Student>>  GetAll()
         {
-            return await _efCoreStudentRepository.GetAll();
+            return await _studentRepository.GetAll();
         }
 
         public async Task<List<Student>> GetAllByTeacherId(int teacherId)
         {
-            return await _efCoreStudentRepository.GetAll(s=>s.TeacherId==teacherId);
+            return await _studentRepository.GetAll(s=>s.TeacherId==teacherId);
         }
 
         public async Task<Student> GetById(int studentId)
         {
-            return await _efCoreStudentRepository.Get(s => s.Id == studentId);
+            
+            return await _studentRepository.Get(s => s.Id == studentId);
         }
+
+       
 
         public async Task Update(Student student)
         {
-             await _efCoreStudentRepository.Update(student);
+             await _studentRepository.Update(student);
+
+            
+            
+
         }
+        
+        
     }
 }

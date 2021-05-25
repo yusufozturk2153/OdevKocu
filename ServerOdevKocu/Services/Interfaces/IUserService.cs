@@ -1,4 +1,5 @@
-﻿using ServerOdevKocu.Data.Entities;
+﻿using ServerOdevKocu.Data.DTOs;
+using ServerOdevKocu.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,11 @@ namespace ServerOdevKocu.Services.Interfaces
 {
     public interface IUserService
     {
-        List<AppUser> GetUsers();
-        AppUser GetUser(int userId);
-        void SignIn(AppUser appUser);
-        void Login(AppUser appUser);
-        void Update(AppUser appUser);
+        Task<List<AppUser>> GetUsers();
+        Task<AppUser> GetUser(int userId);
+        Task Register(UserRegisterDto user);
+        Task Authentication(AppUser appUser);
+        Task Update(AppUser appUser);
+        Task Delete(int userId);
     }
 }

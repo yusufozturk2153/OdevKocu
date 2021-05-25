@@ -1,4 +1,4 @@
-﻿using ServerOdevKocu.Data.Entities;
+﻿using ServerOdevKocu.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +14,7 @@ namespace ServerOdevKocu.Services.Interfaces
         Task Add(Student student);
         Task Update(Student student);
         Task Delete(Student student);
+        
 
     }
 }

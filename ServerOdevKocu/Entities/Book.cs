@@ -1,9 +1,10 @@
-﻿using System;
+﻿using ServerOdevKocu.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ServerOdevKocu.Data.Entities
+namespace ServerOdevKocu.Entities
 {
     public class Book
     {
@@ -13,7 +14,9 @@ namespace ServerOdevKocu.Data.Entities
         public int PublisherId { get; set; }
         public Lesson Lesson { get; set; }
         public Publisher Publisher { get; set; }
+       
         public List<BookSubject> BookSubjects { get; set; }
+        public List<StudentBook> StudentBooks { get; set; }
 
 
     }

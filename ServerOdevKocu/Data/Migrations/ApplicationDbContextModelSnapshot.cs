@@ -120,7 +120,7 @@ namespace ServerOdevKocu.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.AppRole", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.AppRole", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -149,7 +149,7 @@ namespace ServerOdevKocu.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.AppUser", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.AppUser", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -240,7 +240,7 @@ namespace ServerOdevKocu.Migrations
                     b.HasDiscriminator<string>("Discriminator").HasValue("AppUser");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Book", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -265,7 +265,7 @@ namespace ServerOdevKocu.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.BookSubject", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.BookSubject", b =>
                 {
                     b.Property<int>("BookId")
                         .HasColumnType("int");
@@ -280,7 +280,7 @@ namespace ServerOdevKocu.Migrations
                     b.ToTable("BookSubjects");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Homework", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Homework", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -311,7 +311,7 @@ namespace ServerOdevKocu.Migrations
                     b.ToTable("Homeworks");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.HomeworkTask", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.HomeworkTask", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -352,7 +352,7 @@ namespace ServerOdevKocu.Migrations
                     b.ToTable("HomeworkTasks");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Lesson", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Lesson", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -370,7 +370,7 @@ namespace ServerOdevKocu.Migrations
                     b.ToTable("Lesson");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Publisher", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Publisher", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -385,7 +385,29 @@ namespace ServerOdevKocu.Migrations
                     b.ToTable("Publishers");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.StudyPlan", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.StudentBook", b =>
+                {
+                    b.Property<int>("StudentBookId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("StudentBookId");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("StudentBooks");
+                });
+
+            modelBuilder.Entity("ServerOdevKocu.Entities.StudyPlan", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -413,7 +435,7 @@ namespace ServerOdevKocu.Migrations
                     b.ToTable("StudyPlans");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.StudyPlanTask", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.StudyPlanTask", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -459,7 +481,7 @@ namespace ServerOdevKocu.Migrations
                     b.ToTable("StudyPlanTasks");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Subject", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Subject", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -474,9 +496,9 @@ namespace ServerOdevKocu.Migrations
                     b.ToTable("Subjects");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Student", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Student", b =>
                 {
-                    b.HasBaseType("ServerOdevKocu.Data.Entities.AppUser");
+                    b.HasBaseType("ServerOdevKocu.Entities.AppUser");
 
                     b.Property<string>("Class")
                         .HasColumnType("nvarchar(max)");
@@ -492,16 +514,16 @@ namespace ServerOdevKocu.Migrations
                     b.HasDiscriminator().HasValue("Student");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Teacher", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Teacher", b =>
                 {
-                    b.HasBaseType("ServerOdevKocu.Data.Entities.AppUser");
+                    b.HasBaseType("ServerOdevKocu.Entities.AppUser");
 
                     b.HasDiscriminator().HasValue("Teacher");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.HasOne("ServerOdevKocu.Data.Entities.AppRole", null)
+                    b.HasOne("ServerOdevKocu.Entities.AppRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -510,7 +532,7 @@ namespace ServerOdevKocu.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
-                    b.HasOne("ServerOdevKocu.Data.Entities.AppUser", null)
+                    b.HasOne("ServerOdevKocu.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -519,7 +541,7 @@ namespace ServerOdevKocu.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
-                    b.HasOne("ServerOdevKocu.Data.Entities.AppUser", null)
+                    b.HasOne("ServerOdevKocu.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -528,13 +550,13 @@ namespace ServerOdevKocu.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.HasOne("ServerOdevKocu.Data.Entities.AppRole", null)
+                    b.HasOne("ServerOdevKocu.Entities.AppRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ServerOdevKocu.Data.Entities.AppUser", null)
+                    b.HasOne("ServerOdevKocu.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -543,22 +565,22 @@ namespace ServerOdevKocu.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.HasOne("ServerOdevKocu.Data.Entities.AppUser", null)
+                    b.HasOne("ServerOdevKocu.Entities.AppUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Book", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Book", b =>
                 {
-                    b.HasOne("ServerOdevKocu.Data.Entities.Lesson", "Lesson")
+                    b.HasOne("ServerOdevKocu.Entities.Lesson", "Lesson")
                         .WithMany("Books")
                         .HasForeignKey("LessonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ServerOdevKocu.Data.Entities.Publisher", "Publisher")
+                    b.HasOne("ServerOdevKocu.Entities.Publisher", "Publisher")
                         .WithMany("Books")
                         .HasForeignKey("PublisherId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -569,15 +591,15 @@ namespace ServerOdevKocu.Migrations
                     b.Navigation("Publisher");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.BookSubject", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.BookSubject", b =>
                 {
-                    b.HasOne("ServerOdevKocu.Data.Entities.Book", "Book")
+                    b.HasOne("ServerOdevKocu.Entities.Book", "Book")
                         .WithMany("BookSubjects")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ServerOdevKocu.Data.Entities.Subject", "Subject")
+                    b.HasOne("ServerOdevKocu.Entities.Subject", "Subject")
                         .WithMany("BookSubjects")
                         .HasForeignKey("SubjectId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -588,15 +610,15 @@ namespace ServerOdevKocu.Migrations
                     b.Navigation("Subject");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Homework", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Homework", b =>
                 {
-                    b.HasOne("ServerOdevKocu.Data.Entities.Student", "Student")
+                    b.HasOne("ServerOdevKocu.Entities.Student", "Student")
                         .WithMany("Homeworks")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ServerOdevKocu.Data.Entities.Teacher", "Teacher")
+                    b.HasOne("ServerOdevKocu.Entities.Teacher", "Teacher")
                         .WithMany("Homeworks")
                         .HasForeignKey("TeacherId");
 
@@ -605,9 +627,9 @@ namespace ServerOdevKocu.Migrations
                     b.Navigation("Teacher");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.HomeworkTask", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.HomeworkTask", b =>
                 {
-                    b.HasOne("ServerOdevKocu.Data.Entities.Homework", "Homework")
+                    b.HasOne("ServerOdevKocu.Entities.Homework", "Homework")
                         .WithMany("HomeworkTasks")
                         .HasForeignKey("HomeworkId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -616,15 +638,34 @@ namespace ServerOdevKocu.Migrations
                     b.Navigation("Homework");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.StudyPlan", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.StudentBook", b =>
                 {
-                    b.HasOne("ServerOdevKocu.Data.Entities.Student", "Student")
+                    b.HasOne("ServerOdevKocu.Entities.Book", "Book")
+                        .WithMany("StudentBooks")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ServerOdevKocu.Entities.Student", "Student")
+                        .WithMany("StudentBooks")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("ServerOdevKocu.Entities.StudyPlan", b =>
+                {
+                    b.HasOne("ServerOdevKocu.Entities.Student", "Student")
                         .WithMany("StudyPlans")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ServerOdevKocu.Data.Entities.Teacher", "Teacher")
+                    b.HasOne("ServerOdevKocu.Entities.Teacher", "Teacher")
                         .WithMany("StudyPlans")
                         .HasForeignKey("TeacherId");
 
@@ -633,13 +674,13 @@ namespace ServerOdevKocu.Migrations
                     b.Navigation("Teacher");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.StudyPlanTask", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.StudyPlanTask", b =>
                 {
-                    b.HasOne("ServerOdevKocu.Data.Entities.HomeworkTask", "HomeworkTask")
+                    b.HasOne("ServerOdevKocu.Entities.HomeworkTask", "HomeworkTask")
                         .WithMany("StudyPlanTasks")
                         .HasForeignKey("HomeworkTaskId");
 
-                    b.HasOne("ServerOdevKocu.Data.Entities.StudyPlan", "StudyPlan")
+                    b.HasOne("ServerOdevKocu.Entities.StudyPlan", "StudyPlan")
                         .WithMany("StudyPlanTasks")
                         .HasForeignKey("StudyPlanId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -650,58 +691,62 @@ namespace ServerOdevKocu.Migrations
                     b.Navigation("StudyPlan");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Student", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Student", b =>
                 {
-                    b.HasOne("ServerOdevKocu.Data.Entities.Teacher", "Teacher")
+                    b.HasOne("ServerOdevKocu.Entities.Teacher", "Teacher")
                         .WithMany("Students")
                         .HasForeignKey("TeacherId");
 
                     b.Navigation("Teacher");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Book", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Book", b =>
                 {
                     b.Navigation("BookSubjects");
+
+                    b.Navigation("StudentBooks");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Homework", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Homework", b =>
                 {
                     b.Navigation("HomeworkTasks");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.HomeworkTask", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.HomeworkTask", b =>
                 {
                     b.Navigation("StudyPlanTasks");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Lesson", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Lesson", b =>
                 {
                     b.Navigation("Books");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Publisher", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Publisher", b =>
                 {
                     b.Navigation("Books");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.StudyPlan", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.StudyPlan", b =>
                 {
                     b.Navigation("StudyPlanTasks");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Subject", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Subject", b =>
                 {
                     b.Navigation("BookSubjects");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Student", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Student", b =>
                 {
                     b.Navigation("Homeworks");
+
+                    b.Navigation("StudentBooks");
 
                     b.Navigation("StudyPlans");
                 });
 
-            modelBuilder.Entity("ServerOdevKocu.Data.Entities.Teacher", b =>
+            modelBuilder.Entity("ServerOdevKocu.Entities.Teacher", b =>
                 {
                     b.Navigation("Homeworks");
 

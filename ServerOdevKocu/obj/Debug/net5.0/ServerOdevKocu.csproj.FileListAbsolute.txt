@@ -130,3 +130,6 @@ C:\Users\yusuf\OneDrive\Masaüstü\OdevKocu\ServerOdevKocu\obj\Debug\net5.0\Serv
 C:\Users\yusuf\OneDrive\Masaüstü\OdevKocu\ServerOdevKocu\obj\Debug\net5.0\ref\ServerOdevKocu.dll
 C:\Users\yusuf\OneDrive\Masaüstü\OdevKocu\ServerOdevKocu\obj\Debug\net5.0\ServerOdevKocu.pdb
 C:\Users\yusuf\OneDrive\Masaüstü\OdevKocu\ServerOdevKocu\obj\Debug\net5.0\ServerOdevKocu.genruntimeconfig.cache
+C:\Users\yusuf\OneDrive\Masaüstü\OdevKocu\ServerOdevKocu\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\yusuf\OneDrive\Masaüstü\OdevKocu\ServerOdevKocu\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\yusuf\OneDrive\Masaüstü\OdevKocu\ServerOdevKocu\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

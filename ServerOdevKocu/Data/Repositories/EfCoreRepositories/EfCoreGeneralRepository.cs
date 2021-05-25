@@ -37,7 +37,8 @@ namespace ServerOdevKocu.Data.Repositories.EfCoreRepositories
 
         public async Task<TEntity> Get(Expression<Func<TEntity, bool>> filter)
         {
-            return await _context.Set<TEntity>().FindAsync(filter);
+
+            return await _context.Set<TEntity>().SingleOrDefaultAsync(filter);
         }
 
         public async Task<List<TEntity>> GetAll(Expression<Func<TEntity, bool>> filter=null)

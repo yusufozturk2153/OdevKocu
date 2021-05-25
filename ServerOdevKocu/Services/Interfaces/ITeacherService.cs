@@ -1,4 +1,4 @@
-﻿using ServerOdevKocu.Data.Entities;
+﻿using ServerOdevKocu.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using ServerOdevKocu.Data.Entities;
+using ServerOdevKocu.Entities;
 using ServerOdevKocu.Data.FluentApiConfiguration;
 using System;
 using System.Collections.Generic;
@@ -25,6 +25,8 @@ namespace ServerOdevKocu.Data
         public DbSet<StudyPlanTask> StudyPlanTasks { get; set; }
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<BookSubject> BookSubjects { get; set; }
+        public DbSet<StudentBook> StudentBooks { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -36,7 +38,8 @@ namespace ServerOdevKocu.Data
             builder.ApplyConfiguration(new BookSubjectConfiguration());
             builder.ApplyConfiguration(new HomeworkConfiguration());
             builder.ApplyConfiguration(new StudyPlanConfiguration());
-            builder.ApplyConfiguration(new StudyPlanTaskConfiguration()); 
+            builder.ApplyConfiguration(new StudyPlanTaskConfiguration());
+            builder.ApplyConfiguration(new StudentBookConfiguration());
 
 
 

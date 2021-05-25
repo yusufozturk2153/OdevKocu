@@ -10,7 +10,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using ServerOdevKocu.Data;
-using ServerOdevKocu.Data.Entities;
+using ServerOdevKocu.Data.Repositories.EfCoreRepositories;
+using ServerOdevKocu.Data.Repositories.Interfaces;
+using ServerOdevKocu.Entities;
+using ServerOdevKocu.Services;
+using ServerOdevKocu.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +40,9 @@ namespace ServerOdevKocu
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
                 options.Password.RequiredLength = 6;
 
                 options.Lockout.MaxFailedAccessAttempts = 3;
@@ -45,7 +52,16 @@ namespace ServerOdevKocu
                 options.User.RequireUniqueEmail = true;
             });
 
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
+            
+
+            services.AddScoped<IStudentRepository, EfCoreStudentRepository>();
+            services.AddScoped<ITeacherRepository, EfCoreTeacherRepository>();
+
+            services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<ITeacherService, TeacherService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ServerOdevKocu", Version = "v1" });
