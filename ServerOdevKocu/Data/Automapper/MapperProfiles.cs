@@ -15,6 +15,10 @@ namespace ServerOdevKocu.Data.Automapper
             CreateMap<Student, StudentRegisterDto>().ReverseMap();
             CreateMap<Teacher, TeacherRegisterDto>().ReverseMap();
             CreateMap<Student, StudentDetailDto>().ReverseMap();
+            CreateMap<Teacher, TeacherDetailDto>().ReverseMap();
+            CreateMap<AppUser, UserLoginDto>().ReverseMap();
+            CreateMap<AppUser, UserRegisterDto>().ReverseMap();
+
         }
     }
 }

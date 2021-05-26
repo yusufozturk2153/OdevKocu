@@ -7,25 +7,46 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using AutoMapper;
 using ServerOdevKocu.Data.Repositories.Interfaces;
+using ServerOdevKocu.Data.DTOs;
 
 namespace ServerOdevKocu.Services
 {
     public class StudentService : IStudentService
     {
         IStudentRepository _studentRepository;
+        ITeacherService _teacherService;
+        UserManager<AppUser> _userManager ;
+        IMapper _mapper;
         
 
 
-        public StudentService(IStudentRepository studentRepository, 
-            IMapper mapper)
+        public StudentService(IStudentRepository studentRepository, ITeacherService teacherService,
+            IMapper mapper,UserManager<AppUser> userManager)
         {
             _studentRepository = studentRepository;
-            
-         
+            _teacherService = teacherService;
+            _userManager = userManager;
+            _mapper = mapper;
+
         }
-        public async Task Add(Student student)
+        public async Task Add(StudentRegisterDto studentRegisterDto,int? teacherId)
         {
-            await _studentRepository.Add(student);
+
+            Student student = _mapper.Map<Student>(studentRegisterDto);
+            student.SecurityStamp = Guid.NewGuid().ToString();
+            student.UserName = studentRegisterDto.Email;
+
+            if(teacherId != null)
+            {
+                Teacher teacher = await _teacherService.GetById(Convert.ToInt32(teacherId));
+                student.Teacher = teacher;
+
+            }
+            
+
+             await _userManager.CreateAsync(student, studentRegisterDto.Password);
+             await _userManager.AddToRoleAsync(student, "Student");
+
         }
 
         public async Task Delete(Student student)
@@ -54,7 +75,6 @@ namespace ServerOdevKocu.Services
         public async Task Update(Student student)
         {
              await _studentRepository.Update(student);
-
             
             
 

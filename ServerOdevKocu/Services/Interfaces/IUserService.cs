@@ -13,7 +13,9 @@ namespace ServerOdevKocu.Services.Interfaces
         Task<AppUser> GetUser(int userId);
         Task Register(UserRegisterDto user);
         Task Authentication(AppUser appUser);
+        string GenerateJwtToken(AppUser appUser);
         Task Update(AppUser appUser);
         Task Delete(int userId);
+
     }
 }

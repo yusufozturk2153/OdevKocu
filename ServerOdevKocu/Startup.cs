@@ -54,13 +54,15 @@ namespace ServerOdevKocu
 
             services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
-            
+            services.AddScoped<UserManager<AppUser>>();
 
             services.AddScoped<IStudentRepository, EfCoreStudentRepository>();
             services.AddScoped<ITeacherRepository, EfCoreTeacherRepository>();
+            services.AddScoped<IUserRepository, EfCoreUserRepository>();
 
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<ITeacherService, TeacherService>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddSwaggerGen(c =>
             {
@@ -85,6 +87,7 @@ namespace ServerOdevKocu
             app.UseAuthentication();
 
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {

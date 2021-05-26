@@ -1,4 +1,5 @@
-﻿using ServerOdevKocu.Entities;
+﻿using ServerOdevKocu.Data.DTOs;
+using ServerOdevKocu.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace ServerOdevKocu.Services.Interfaces
     {
         Task<Teacher> GetById(int teacherId);
         Task<List<Teacher>> GetAll();
-        Task Add(Teacher teacher);
+        Task Add(TeacherRegisterDto teacherRegisterDto);
         Task Update(Teacher teacher);
         Task Delete(Teacher teacher);
     }

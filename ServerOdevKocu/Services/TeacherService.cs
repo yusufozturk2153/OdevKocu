@@ -6,20 +6,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ServerOdevKocu.Data.Repositories.Interfaces;
+using ServerOdevKocu.Data.DTOs;
+using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 
 namespace ServerOdevKocu.Services
 {
     public class TeacherService : ITeacherService
     {
-        ITeacherRepository _teacherRepository;
-        public TeacherService(ITeacherRepository teacherRepository)
+        ITeacherRepository _teacherRepository; 
+        IMapper _mapper;
+        UserManager<AppUser> _userManager;
+        public TeacherService(ITeacherRepository teacherRepository, IMapper mapper, UserManager<AppUser> userManager)
         {
             _teacherRepository = teacherRepository;
+            _mapper = mapper;
+            _userManager = userManager;
         }
 
-        public async Task Add(Teacher teacher)
+        public async Task Add(TeacherRegisterDto teacherRegisterDto)
         {
-            await _teacherRepository.Add(teacher);
+            Teacher teacher = _mapper.Map<Teacher>(teacherRegisterDto);
+
+            teacher.SecurityStamp = Guid.NewGuid().ToString();
+
+            await _userManager.CreateAsync(teacher, teacherRegisterDto.Password);
+            await _userManager.AddToRoleAsync(teacher, "Teacher");
         }
 
         public async Task Delete(Teacher teacher)
