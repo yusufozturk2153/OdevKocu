@@ -59,10 +59,18 @@ namespace ServerOdevKocu
             services.AddScoped<IStudentRepository, EfCoreStudentRepository>();
             services.AddScoped<ITeacherRepository, EfCoreTeacherRepository>();
             services.AddScoped<IUserRepository, EfCoreUserRepository>();
+            services.AddScoped<IBookRepository, EfCoreBookRepository>();
+            services.AddScoped<ILessonRepository, EfCoreLessonRepository>();
+            services.AddScoped<IPublisherRepository, EfCorePublisherRepository>();
+            services.AddScoped<ISubjectRepository, EfCoreSubjectRepository>();
 
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<ITeacherService, TeacherService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IBookService, BookService>();
+            services.AddScoped<ILessonService, LessonService>();
+            services.AddScoped<IPublisherService, PublisherService>();
+            services.AddScoped<ISubjectService, SubjectService>();
 
             services.AddSwaggerGen(c =>
             {

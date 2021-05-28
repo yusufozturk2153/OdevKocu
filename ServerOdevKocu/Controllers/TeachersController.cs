@@ -107,7 +107,8 @@ namespace ServerOdevKocu.Controllers
 
             teacher.UserName = teacherDetailDto.Email;
 
-            teacher.NormalizedEmail = teacherDetailDto.Email.ToUpper(); 
+            teacher.NormalizedEmail = teacherDetailDto.Email.ToUpper();
+            teacher.NormalizedUserName = teacherDetailDto.Email.ToUpper();
 
             try
             {
@@ -119,7 +120,6 @@ namespace ServerOdevKocu.Controllers
                 return BadRequest();
             }
 
-            
 
         }
 

@@ -14,7 +14,6 @@ namespace ServerOdevKocu.Entities
         public int PublisherId { get; set; }
         public Lesson Lesson { get; set; }
         public Publisher Publisher { get; set; }
-       
         public List<BookSubject> BookSubjects { get; set; }
         public List<StudentBook> StudentBooks { get; set; }
 

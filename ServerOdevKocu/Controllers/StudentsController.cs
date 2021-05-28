@@ -77,6 +77,7 @@ namespace ServerOdevKocu.Controllers
             student.UserName = studentDetailDto.Email;
 
             student.NormalizedEmail= studentDetailDto.Email.ToUpper();
+            student.NormalizedUserName = studentDetailDto.Email.ToUpper();
 
             try {
                 await _studentService.Update(student);

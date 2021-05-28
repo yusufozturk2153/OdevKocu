@@ -9,5 +9,7 @@ namespace ServerOdevKocu.Data.Repositories.Interfaces
 {
     public interface IStudentRepository : IRepository<Student>
     {
+        Task<List<Student>> GetAllWithBooks();
+        Task<Student> GetStudentWithBooks(int studentId);
     }
 }

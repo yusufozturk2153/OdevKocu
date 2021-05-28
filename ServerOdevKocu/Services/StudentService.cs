@@ -56,7 +56,7 @@ namespace ServerOdevKocu.Services
 
         public async Task<List<Student>>  GetAll()
         {
-            return await _studentRepository.GetAll();
+            return await _studentRepository.GetAllWithBooks();
         }
 
         public async Task<List<Student>> GetAllByTeacherId(int teacherId)
@@ -67,7 +67,7 @@ namespace ServerOdevKocu.Services
         public async Task<Student> GetById(int studentId)
         {
             
-            return await _studentRepository.Get(s => s.Id == studentId);
+            return await _studentRepository.GetStudentWithBooks(studentId);
         }
 
        
