@@ -28,9 +28,9 @@ namespace ServerOdevKocu.Services
             await _lessonRepository.Add(lesson);
         }
 
-        public async Task Delete(int lessonId)
+        public async Task Delete(Lesson lesson)
         {
-            Lesson lesson = await _lessonRepository.Get(l => l.Id == lessonId);
+           
             await _lessonRepository.Delete(lesson);
         }
 
@@ -51,7 +51,7 @@ namespace ServerOdevKocu.Services
 
         public async Task Update(Lesson lesson)
         {
-
+            
             await _lessonRepository.Update(lesson);
         }
     }

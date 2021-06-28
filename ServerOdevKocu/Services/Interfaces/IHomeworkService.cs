@@ -9,7 +9,7 @@ namespace ServerOdevKocu.Services.Interfaces
 {
      public interface IHomeworkService
     {
-        Task Add(HomeworkDto homeworkDto);
+        Task Add(AddHomeworkDto homeworkDto);
         Task Update(Homework homework);
         Task Delete(Homework homework);
         Task<Homework> GetById(int homeworkId);

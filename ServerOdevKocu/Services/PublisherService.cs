@@ -21,9 +21,12 @@ namespace ServerOdevKocu.Services
             _mapper = mapper;
         }
 
-        public async Task Add(PublisherDto publisherDto)
+        public async Task Add(string publisherName)
         {
-            Publisher publisher = _mapper.Map<Publisher>(publisherDto);
+            Publisher publisher = new Publisher
+            {
+                Name = publisherName
+            };
             await _publisherRepository.Add(publisher);
         }
 

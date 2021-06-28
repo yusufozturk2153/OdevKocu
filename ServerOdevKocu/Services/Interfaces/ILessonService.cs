@@ -11,7 +11,7 @@ namespace ServerOdevKocu.Services.Interfaces
     {
         Task Add(LessonDto lessonDto);
         Task Update(Lesson lesson);
-        Task Delete(int lessonId);
+        Task Delete(Lesson lesson);
         Task<Lesson> GetById(int lessonId);
         Task<List<Lesson>> GetLessons();
         Task<List<Lesson>> GetLessonsByExamType(string ExamType);

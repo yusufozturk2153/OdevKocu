@@ -20,7 +20,7 @@ namespace ServerOdevKocu.Services
             _homeworkRepository = homeworkRepository;
             _mapper = mapper;
         }
-        public async Task Add(HomeworkDto homeworkDto)
+        public async Task Add(AddHomeworkDto homeworkDto)
         {
             Homework homework = _mapper.Map<Homework>(homeworkDto);
             await _homeworkRepository.Add(homework);

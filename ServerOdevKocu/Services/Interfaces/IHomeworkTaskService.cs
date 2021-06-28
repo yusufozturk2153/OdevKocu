@@ -14,5 +14,7 @@ namespace ServerOdevKocu.Services.Interfaces
         Task Delete(HomeworkTask homeworkTask);
         Task<HomeworkTask> GetById(int homeworkTaskId);
         Task<List<HomeworkTask>> GetAll();
+        Task<List<HomeworkTask>> GetTasksByHomeworkId(int homeworkId);
+
     }
 }

@@ -9,7 +9,7 @@ namespace ServerOdevKocu.Services.Interfaces
 {
     public interface IPublisherService
     {
-        Task Add(PublisherDto publisherDto);
+        Task Add(string publisherName);
         Task Update(Publisher publisher);
         Task Delete(Publisher publisher);
         Task<Publisher> GetById(int publisherId);

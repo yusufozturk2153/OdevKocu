@@ -10,11 +10,13 @@ namespace ServerOdevKocu.Services.Interfaces
     public interface IBookService
     {
         Task Add(BookDto bookDto);
+        Task AddBookToStudent(StudentBookDto studentBookDto);
         Task Update(Book book);
         Task Delete(Book  book);
         Task<Book> GetById(int bookId);
         Task<List<Book>> GetBooks();
         Task<List<Book>> GetBooksByPublisherId(int publisherId);
+        Task<List<Book>> GetBooksByExamType(string examType);
        
 
     }

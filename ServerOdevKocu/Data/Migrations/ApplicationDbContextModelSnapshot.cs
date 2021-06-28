@@ -247,6 +247,9 @@ namespace ServerOdevKocu.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ExamType")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("LessonId")
                         .HasColumnType("int");
 
@@ -488,10 +491,15 @@ namespace ServerOdevKocu.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("LessonId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LessonId");
 
                     b.ToTable("Subjects");
                 });
@@ -691,6 +699,17 @@ namespace ServerOdevKocu.Migrations
                     b.Navigation("StudyPlan");
                 });
 
+            modelBuilder.Entity("ServerOdevKocu.Entities.Subject", b =>
+                {
+                    b.HasOne("ServerOdevKocu.Entities.Lesson", "Lesson")
+                        .WithMany("Subjects")
+                        .HasForeignKey("LessonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Lesson");
+                });
+
             modelBuilder.Entity("ServerOdevKocu.Entities.Student", b =>
                 {
                     b.HasOne("ServerOdevKocu.Entities.Teacher", "Teacher")
@@ -720,6 +739,8 @@ namespace ServerOdevKocu.Migrations
             modelBuilder.Entity("ServerOdevKocu.Entities.Lesson", b =>
                 {
                     b.Navigation("Books");
+
+                    b.Navigation("Subjects");
                 });
 
             modelBuilder.Entity("ServerOdevKocu.Entities.Publisher", b =>

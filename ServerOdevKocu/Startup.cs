@@ -53,7 +53,8 @@ namespace ServerOdevKocu
             });
 
             services.AddAutoMapper(typeof(Startup));
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddScoped<UserManager<AppUser>>();
 
             services.AddScoped<IStudentRepository, EfCoreStudentRepository>();
@@ -63,6 +64,11 @@ namespace ServerOdevKocu
             services.AddScoped<ILessonRepository, EfCoreLessonRepository>();
             services.AddScoped<IPublisherRepository, EfCorePublisherRepository>();
             services.AddScoped<ISubjectRepository, EfCoreSubjectRepository>();
+            services.AddScoped<IHomeworkRepository, EFCoreHomeworkRepository>();
+            services.AddScoped<IHomeworkTaskRepository, EfCoreHomeworkTaskRepository>();
+            services.AddScoped<IStudyPlanRepository, EfCoreStudyPlanRepository>();
+            services.AddScoped<IStudyPlanTaskRepository, EfCoreStudyPlanTaskRepository>();
+
 
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<ITeacherService, TeacherService>();
@@ -71,6 +77,11 @@ namespace ServerOdevKocu
             services.AddScoped<ILessonService, LessonService>();
             services.AddScoped<IPublisherService, PublisherService>();
             services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<IHomeworkService, HomeworkService>();
+            services.AddScoped<IHomeworkTaskService, HomeworkTaskService>();
+            services.AddScoped<IStudyPlanService, StudyPlanService>();
+            services.AddScoped<IStudyPlanTaskService, StudyPlanTaskService>();
+
 
             services.AddSwaggerGen(c =>
             {

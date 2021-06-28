@@ -11,5 +11,6 @@ namespace ServerOdevKocu.Entities
         public string Name { get; set; }
         public string ExamType { get; set; }
         public List<Book> Books { get; set; }
+        public List<Subject> Subjects { get; set; }
     }
 }

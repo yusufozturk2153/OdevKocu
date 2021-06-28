@@ -9,7 +9,7 @@ namespace ServerOdevKocu.Services.Interfaces
 {
     public interface IStudyPlanService
     {
-        Task Add(StudyPlanDto studyPlanDto);
+        Task Add(AddStudyPlanDto studyPlanDto);
         Task Update(StudyPlan studyPlan);
         Task Delete(StudyPlan studyPlan);
         Task<StudyPlan> GetById(int studyPlanId);

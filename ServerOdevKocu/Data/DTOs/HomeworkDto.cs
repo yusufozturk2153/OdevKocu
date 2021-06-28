@@ -14,6 +14,6 @@ namespace ServerOdevKocu.Data.DTOs
         public DateTime AddingDate { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public List<HomeworkTask> HomeworkTasks { get; set; }
+        public List<HomeworkTaskDto> HomeworkTasks { get; set; }
     }
 }

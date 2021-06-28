@@ -1,4 +1,6 @@
-﻿using ServerOdevKocu.Data.Repositories.Interfaces;
+﻿using AutoMapper;
+using ServerOdevKocu.Data.DTOs;
+using ServerOdevKocu.Data.Repositories.Interfaces;
 using ServerOdevKocu.Entities;
 using ServerOdevKocu.Services.Interfaces;
 using System;
@@ -11,17 +13,24 @@ namespace ServerOdevKocu.Services
     public class SubjectService : ISubjectService
     {
         ISubjectRepository _subjecttRepository;
-       
+        IMapper _mapper;
 
-        public SubjectService(ISubjectRepository subjecttRepository)
+
+        public SubjectService(ISubjectRepository subjecttRepository, IMapper mapper)
         {
             _subjecttRepository = subjecttRepository;
-           
+            _mapper = mapper;
         }
 
-        public async Task Add(Subject subject)
+        public async Task Add(SubjectDto subjectDto)
         {
+            Subject subject = _mapper.Map<Subject>(subjectDto);
             await _subjecttRepository.Add(subject);
+        }
+
+        public async Task AddSubjectToBook(BookSubjectDto bookSubjectDto)
+        {
+            await _subjecttRepository.AddSubjectToBook(bookSubjectDto.BookId, bookSubjectDto.SubjectId);
         }
 
         public async Task Delete(Subject subject)

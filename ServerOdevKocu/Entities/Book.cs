@@ -10,6 +10,7 @@ namespace ServerOdevKocu.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string ExamType { get; set; }
         public int LessonId { get; set; }
         public int PublisherId { get; set; }
         public Lesson Lesson { get; set; }

@@ -9,5 +9,6 @@ namespace ServerOdevKocu.Data.Repositories.Interfaces
 {
     public interface ISubjectRepository : IRepository<Subject>
     {
+        Task AddSubjectToBook(int BookId, int SubjectId);
     }
 }

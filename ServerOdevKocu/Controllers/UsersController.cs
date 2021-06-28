@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace ServerOdevKocu.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
         private readonly IMapper _mapper;

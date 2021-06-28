@@ -133,3 +133,6 @@ C:\Users\yusuf\OneDrive\Masaüstü\OdevKocu\ServerOdevKocu\obj\Debug\net5.0\Serv
 C:\Users\yusuf\OneDrive\Masaüstü\OdevKocu\ServerOdevKocu\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\yusuf\OneDrive\Masaüstü\OdevKocu\ServerOdevKocu\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\yusuf\OneDrive\Masaüstü\OdevKocu\ServerOdevKocu\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\yusuf\OneDrive\Masaüstü\OdevKocu\ServerOdevKocu\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\yusuf\OneDrive\Masaüstü\OdevKocu\ServerOdevKocu\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\yusuf\OneDrive\Masaüstü\OdevKocu\ServerOdevKocu\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

@@ -41,6 +41,11 @@ namespace ServerOdevKocu.Services
             return await _homeworkTaskRepository.Get(ht => ht.Id == homeworkTaskId);
         }
 
+        public async Task<List<HomeworkTask>> GetTasksByHomeworkId(int homeworkId)
+        {
+            return await _homeworkTaskRepository.GetAll(ht=>ht.HomeworkId==homeworkId);
+        }
+
         public async Task Update(HomeworkTask homeworkTask)
         {
             await _homeworkTaskRepository.Update(homeworkTask);

@@ -40,6 +40,7 @@ namespace ServerOdevKocu.Data
             builder.ApplyConfiguration(new StudyPlanConfiguration());
             builder.ApplyConfiguration(new StudyPlanTaskConfiguration());
             builder.ApplyConfiguration(new StudentBookConfiguration());
+            builder.ApplyConfiguration(new SubjectConfiguration());
 
 
 

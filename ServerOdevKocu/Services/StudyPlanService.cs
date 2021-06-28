@@ -20,7 +20,7 @@ namespace ServerOdevKocu.Services
             _studyPlanRepository = studyPlanRepository;
             _mapper = mapper;
         }
-        public async Task Add(StudyPlanDto studyPlanDto)
+        public async Task Add(AddStudyPlanDto studyPlanDto)
         {
             StudyPlan studyPlan = _mapper.Map<StudyPlan>(studyPlanDto);
             await _studyPlanRepository.Add(studyPlan);

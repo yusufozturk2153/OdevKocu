@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace ServerOdevKocu.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class StudentsController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -27,7 +27,7 @@ namespace ServerOdevKocu.Controllers
             _userManager = userManager;
         }
 
-        [HttpPost("register")]
+        [HttpPost("Register")]
         public async Task<IActionResult> Register(StudentRegisterDto studentRegisterDto)
         {
             try
@@ -47,21 +47,22 @@ namespace ServerOdevKocu.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
        {
-            var result =   await _studentService.GetAll();
+            var students =   await _studentService.GetAll();
+            var result = _mapper.Map<List<StudentDto>>(students);
 
             return Ok(result);
 
         }
-        [HttpGet("id")]
-        public async Task<IActionResult> Get(int studentId)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
         {
-            var result = await _studentService.GetById(studentId);
-
+            var student = await _studentService.GetById(id);
+            var result = _mapper.Map<Student, StudentDto>(student);
             return Ok(result);
 
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, StudentDetailDto studentDetailDto)
+        public async Task<IActionResult> Update(int id, StudentUpdateDto studentDetailDto)
         {
             if (!ModelState.IsValid)
             {

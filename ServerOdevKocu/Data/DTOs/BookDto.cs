@@ -9,6 +9,7 @@ namespace ServerOdevKocu.Data.DTOs
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string ExamType { get; set; }
         public int LessonId { get; set; }
         public int PublisherId { get; set; }
     }

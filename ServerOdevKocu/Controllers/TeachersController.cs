@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace ServerOdevKocu.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class TeachersController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -53,16 +53,16 @@ namespace ServerOdevKocu.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var result = await _teacherService.GetAll();
-
+            var teachers = await _teacherService.GetAll();
+            var result = _mapper.Map<List<TeacherDto>>(teachers);
             return Ok(result);
 
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var result = await _teacherService.GetById(id);
-
+            var teacher = await _teacherService.GetById(id);
+            var result = _mapper.Map<TeacherDto>(teacher);
             return Ok(result);
 
         }
@@ -70,8 +70,8 @@ namespace ServerOdevKocu.Controllers
         [HttpGet("students")]
         public async Task<IActionResult> GetStudentsOfTeacher(int id)
         {
-            var result = await _studentService.GetAllByTeacherId(id);
-
+            var students = await _studentService.GetAllByTeacherId(id);
+            var result = _mapper.Map<List<StudentDto>>(students);
             return Ok(result);
 
         }
@@ -92,7 +92,7 @@ namespace ServerOdevKocu.Controllers
         }
 
         [HttpPut("update/{id}")]
-        public async Task<IActionResult> Update(int id, TeacherDetailDto teacherDetailDto)
+        public async Task<IActionResult> Update(int id, TeacherUpdateDto teacherDetailDto)
         {
             if (!ModelState.IsValid)
             {

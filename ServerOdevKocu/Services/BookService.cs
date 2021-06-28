@@ -26,6 +26,7 @@ namespace ServerOdevKocu.Services
         {
 
             Book book = _mapper.Map<Book>(bookDto);
+            
             await _bookRepository.Add(book);
 
         }
@@ -33,6 +34,12 @@ namespace ServerOdevKocu.Services
         public async Task Delete(Book book)
         {
             await _bookRepository.Delete(book);
+        }
+
+        public async Task<List<Book>> GetBooksByExamType(string examType)
+        {
+
+            return await _bookRepository.GetAll(b => b.ExamType == examType);
         }
 
         public async Task<List<Book>> GetBooks()
@@ -53,6 +60,11 @@ namespace ServerOdevKocu.Services
         public async Task Update(Book book)
         {
             await _bookRepository.Update(book);
+        }
+
+        public async Task AddBookToStudent(StudentBookDto studentBookDto)
+        {
+            await _bookRepository.AddBookToStudent(studentBookDto.BookId, studentBookDto.StudentId);
         }
     }
 }

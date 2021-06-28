@@ -16,6 +16,22 @@ namespace ServerOdevKocu.Data.Repositories.EfCoreRepositories
             _context = context;
         }
 
+        public async Task AddBookToStudent(int bookId, int studentId)
+        {
+            Book book = await GetBookWithSubjects(bookId);
+            Student student = await _context.Students.FindAsync(studentId);
+
+            StudentBook studentBook = new StudentBook
+            {
+                Student = student,
+                Book = book
+            };
+
+            await _context.StudentBooks.AddAsync(studentBook);
+            await _context.SaveChangesAsync();
+
+        }
+
         public async Task<List<Book>> GetAllWithSubjects()
         {
             return await _context.Books.Include(b => b.BookSubjects).ThenInclude(bs => bs.Subject).ToListAsync();

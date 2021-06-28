@@ -12,6 +12,7 @@ namespace ServerOdevKocu.Data.Repositories.Interfaces
 
         Task<Book> GetBookWithSubjects(int bookId);
         Task<List<Book>> GetAllWithSubjects();
+        Task AddBookToStudent(int bookId,int studentId);
        
     }
 }
